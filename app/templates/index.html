@@ -1,0 +1,18 @@
+{% extends 'Base.html' %}
+
+{% block content %}
+
+    {% if not current_user.is_anonymous %}
+    <a href="{{ url_for('post') }}">发布新话题</a>
+    {% else %}
+    {% endif %}
+
+    <h3>热门话题：</h3>
+    <hr>
+    {% for post in posts %}
+        {% include '_post.html' %}
+    {% endfor %}
+    {% include '_paging.html' %}
+
+
+{% endblock %}

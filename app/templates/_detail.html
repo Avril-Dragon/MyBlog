@@ -1,0 +1,49 @@
+<table>
+    <tr valign="top">
+        <td>
+            <div class="pls">
+                <div class="pi">
+                    <div>
+                        <a href="{{ url_for('user',username=comment.author.username) }}">{{ comment.author.username }}</a>
+                    </div>
+
+                </div>
+                <div>
+                    <img src="{{ comment.author.user_avatar }}" width="100">
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="plc">
+                <div>
+                    <span>评论时间:{{ comment.timestamp }}</span>
+                </div>
+                <div>
+                    <p>{{ comment.body }}</p>
+                </div>
+            </div>
+        </td>
+        <br>
+        <hr>
+    </tr>
+    <tr>
+        <td class="pls"></td>
+        <td class="plc" style="overflow:visible;">
+            <div class="po hin">
+                <div class="pob cl">
+                    <em>
+                        <a class="fastre" href="“ onclick="showWindow('reply', this.href)" one-link-mark="yes">回复</a>
+
+
+
+                        <a class="replyadd" href="javascript:;"  one-link-mark="yes">支持</a>
+
+
+                        <a href="javascript:;"">举报</a>
+                    </em>
+
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>

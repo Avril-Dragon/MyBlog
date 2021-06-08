@@ -1,0 +1,80 @@
+.pls {
+    width: 160px;
+    background: #E5EDF2;
+    overflow: hidden;
+    border-right: 1px solid #C2D5E3;
+    vertical-align: top;
+}
+.plc {
+    padding: 0 20px;
+    vertical-align: top;
+}
+
+.pi {
+    overflow: hidden;
+    margin-bottom: 10px;
+    padding: 10px 0px 10px 0px;
+    height: 16px;
+    border-bottom: 1px dashed #CDCDCD;
+}
+.pob em a {
+    padding: 5px 10px 5px 25px;
+}
+.fastre {
+    background: url(https://bbs.9you.com/static/image/common/fastreply.gif) no-repeat 0 50%;
+}
+.replyadd {
+    background: url(https://static.52pojie.cn/static/image/common/rec_add.gif) no-repeat 0 50%;
+}
+.pob {
+    line-height: 36px;
+}
+
+
+
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+table {
+    display: table;
+    border-collapse: separate;
+    box-sizing: border-box;
+    text-indent: initial;
+    border-spacing: 2px;
+    border-color: grey;
+}
+tbody {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    border-color: inherit;
+}
+
+.tl th, .tl td {
+    padding: 5px 0;
+    border-bottom: 1px solid #C2D5E3;
+}
+.tl .num {
+    width: 60px;
+    line-height: 14px;
+}
+.new{
+    width:600px;
+    padding-left:20px;
+    background-repeat:no-repeat;
+    background-position:0 50%;
+    color:#369;font-weight:700;
+    text-align: left;
+}
+.by{
+    width:200px;
+    line-height:30px;
+}
+.num{
+    width:100px;
+    line-height:14px;
+    text-align: right;
+}

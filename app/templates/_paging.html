@@ -1,0 +1,19 @@
+<br>
+    总页数{{ totalpage }}
+<br>
+    当前页数：{{ paginate.page }}
+<br>
+    {#如果存在上一页#}
+    {% if paginate.has_prev %}
+        <a href="{{ request.base_url }}/?page={{ paginate.prev_num }}">上一页:</a>
+    {% endif %}
+
+    {%  for i in  paginate.iter_pages() %}
+        <a href="{{ request.base_url }}/?page={{ i }}">{{ i }}</a>
+    {% endfor %}
+
+    {#如果存在下一页#}
+    {% if paginate.has_next %}
+        <a href="{{ request.base_url }}/?page={{ paginate.next_num }}">下一页:</a>
+    {% endif %}
+<br>

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div>
+        <h2>{{ article.title }}</h2>
+    </div>
+    <table>
+        <tr valign="top">
+            <!-#可以更改用户头像的大小->
+            <td>
+                <div class="pls">
+                    <div class="pi">
+                        <div>
+                            <a href="{{ url_for('user',username=article.author.username) }}">{{ article.author.username }}</a>
+                        </div>
+
+                    </div>
+                    <div>
+                        <img src="{{ article.author.user_avatar }}" width="100">
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="plc">
+                    <div>
+                        <span>发布时间:{{ article.timestamp }}</span>
+                    </div>
+                    <div>
+                        <p>{{ article.body }}</p>
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+    </table>
+    <div>
+        {% for comment in comments %}
+        {% include '_detail.html' %}
+        {% endfor %}
+    </div>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.body.label }}<br>
+            {{ form.body(cols=50, rows=4) }}<br>
+            {% for error in form.body.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+
+{% endblock %}

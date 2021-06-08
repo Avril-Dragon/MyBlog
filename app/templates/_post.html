@@ -1,0 +1,28 @@
+<div>
+    <table>
+        <tbody id="normalthread_1476186">
+        <tr>
+            <td class="icn">
+                <a href="" title="有新回复 - 新窗口打开" target="_blank" one-link-mark="yes">
+                    <img src="https://bbs.9you.com/static/image/common/folder_new.gif">
+                </a>
+            </td>
+            <th class="new">
+                <a href="{{ url_for('article',article_id=post.id) }}" >{{post.title}}</a>
+            </th>
+            <td class="by">
+                <a href="{{ url_for('user',username=post.author.username) }}">{{ post.author.username }}</a>
+            <td class="by">
+                <em><span>{{ post.timestamp}}</span></em>
+            </td>
+            </td>
+            <td class="num">
+                <a href="thread-1476186-1-1.html" class="xi2" one-link-mark="yes">0   </a><em>440</em>
+            </td>
+
+        </tr>
+        </tbody>
+
+    </table>
+    <hr>
+</div>

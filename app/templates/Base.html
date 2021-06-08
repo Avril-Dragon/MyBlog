@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script language="javascript" type="text/javascript"
+            src="{{ url_for('static', filename='js/index.js')  }}"></script>
+
+    {% if title %}
+    <title>{{ title }}-博客</title>
+    {% else %}
+        <title>欢迎来到博客!</title>
+    {% endif %}
+</head>
+<body id="myBody" >
+    <header id="header">
+        <div id="banner"></div>
+        <div id="header-outer" class="outer">
+            <div id="header-title" class="inner">
+                <h1 id="logo-wrap">
+                    <a href="/" id="logo">你好啊！{{ current_user.username }}</a>
+                </h1>
+            </div>
+            <div id="header-inner" class="inner">
+                <nav id="main-nav">
+                    <a id="main-nav-toggle" class="nav-icon"></a>
+
+                    <a class="main-nav-link" href="{{ url_for('index') }}">首页</a>
+                    {% if current_user.is_anonymous %}
+                        <a class="main-nav-link" href="{{ url_for('login') }}">登录</a>
+                    {% else %}
+                        <a  class="main-nav-link" href="{{ url_for('user', username=current_user.username) }}">用户中心</a>
+
+                        <a class="main-nav-link" href="{{ url_for('logout') }}">退出</a>
+                    {% endif %}
+                </nav>
+                <nav id="sub-nav">
+
+                    <a id="nav-rss-link" class="nav-icon" href="/" title="RSS Feed"></a>
+
+                    <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+                </nav>
+            </div>
+            </div>
+        </div>
+    </header>
+    <hr>
+    <!-展示flash->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ur>
+            {% for message in messages %}
+            <li> {{ message }} </li>
+            {% endfor %}
+        </ur>
+        {% endif %}
+    {% endwith %}
+
+    {% block content %}
+
+    {% endblock %}
+</body>
+</html>
