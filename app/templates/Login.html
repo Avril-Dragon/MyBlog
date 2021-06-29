@@ -1,0 +1,130 @@
+{% extends 'Base.html' %}
+{% block content %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/article.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/article2.css') }}">
+    <link rel="stylesheet" id="css_responsive" type="text/css" href="https://static.52pojie.cn/cache/style_1_responsive.css?GVK">
+
+
+    <div class="pl bm bmw">
+        <div class="bm_h bbs" id="topline">
+            <span class="y">
+            <a href="{{ url_for('register') }}" class="xi2" >没有帐号？注册[Register] </a>
+            </span>
+            <h3 class="xs2" style="margin-top: 5px">登录</h3>
+        </div>
+        <h3 class="flb">
+            <span></span>
+        </h3>
+        <form method="post" >
+            {{ form.hidden_tag() }}
+            <div class="c cl">
+                <div class="rfm" id="username">
+                    <table>
+                        <tbody><tr>
+                            <th>
+                                <label >{{ form.username.label }}:</label>
+                            </th>
+                            <td>
+                                {{ form.username(size=32) }}<br>
+                                {% for error in form.username.errors %}
+                                    <span style="color: red">[{{ error }}]</span>
+                                {% endfor %}
+                            </td>
+                            <td class="tipcol">
+                                <a href="{{ url_for('register') }}" >注册[Register] </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="rfm" id="password">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <th><label >{{ form.password.label }}:</label></th>
+                            <td>
+                                {{ form.password(size=32) }}<br>
+                                {% for error in form.password.errors %}
+                                    <span style="color: red">[{{ error }}]</span>
+                                {% endfor %}
+                            </td>
+                            <td class="tipcol">
+                                <a href=""  title="找回密码" >找回密码</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="rfm" id="question">
+                    <table>
+                        <tbody><tr>
+                            <th>安全提问:</th>
+                            <td><select  width="213" name="questionid" >
+                                <option value="0">安全提问(未设置请忽略)</option>
+                                <option value="1">母亲的名字</option>
+                                <option value="2">爷爷的名字</option>
+                                <option value="3">父亲出生的城市</option>
+                                <option value="4">您其中一位老师的名字</option>
+                                <option value="5">您个人计算机的型号</option>
+                                <option value="6">您最喜欢的餐馆名称</option>
+                                <option value="7">驾驶执照最后四位数字</option>
+                            </select>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="rfm" id="answer" style="display:none">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <th>答案:</th>
+                            <td>
+                                <input type="text" name="answer"  size="30" class="px p_fre" tabindex="1">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="rfm " id="remember">
+                    <table>
+                        <tbody><tr>
+                            <th></th>
+                            <td>
+                                <label >
+                                    <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+                                </label>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="rfm mbw bw0" id="fuwutiaoli">
+                    <table width="100%" style="margin-left: 0px">
+                        <tbody>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <td >
+                                {{ form.submit() }}
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="rfm bw0  mbw" id="kuaijiedenglu">
+                    <hr class="l">
+                    <table>
+                        <tbody><tr>
+                            <th>快捷登录:</th>
+                            <td>
+                                <a href=""><img src="https://static.52pojie.cn/static/image/common/qq_login.gif" class="vm"></a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+
+    </div>
+{% endblock %}

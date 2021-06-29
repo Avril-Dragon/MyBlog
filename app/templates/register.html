@@ -1,0 +1,143 @@
+{% extends 'Base.html' %}
+{% block content %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/article.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/article2.css') }}">
+
+
+    <div class="pl bm bmw">
+        <div class="bm_h bbs" id="topline">
+            <span class="y">
+                <a href="{{ url_for('login') }}"  class="xi2" >已有帐号？现在登录</a>
+            </span>
+            <h3  class="xs2" style="margin-top: 5px">
+                注册[Register]
+            </h3>
+        </div>
+        <form method="post" >
+            {{ form.hidden_tag() }}
+            <div class="bm_c">
+                <p id="warning" style="text-align: center;">
+                    <span style="font-family: 'microsoft yahei';">
+                        <a title="" href="" target="_blank" >
+                            <b>
+                                <font color="red">切勿将邮箱输入错误，否则账号将无法激活而作废，请仔细反复检查邮箱，验证码异常请点我！</font>
+                            </b>
+                        </a>
+                    </span>
+                </p>
+                <br>
+                <div class="rfm" id="username">
+                <table>
+                    <tbody>
+                    <tr>
+                        <th>
+                            <span class="rq">*</span>
+                            <label f>{{ form.username.label }}:</label>
+                        </th>
+                        <td>
+                            {{ form.username(size=32) }}<br>
+                            {% for error in form.username.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
+
+                <div class="rfm" id="password">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <th>
+                                <span class="rq">*</span>
+                                <label >{{ form.password.label }}:</label>
+                            </th>
+                            <td>
+                                {{ form.password(size=32) }}<br>
+                                {% for error in form.password.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="rfm" id="password2">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <th>
+                                <span class="rq">*</span>
+                                <label >{{ form.password2.label }}:</label>
+                            </th>
+                            <td>
+                                {{ form.password2(size=32) }}<br>
+                                {% for error in form.password2.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="rfm" id="email">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <th>
+                                <span class="rq">*</span>
+                                <label >{{ form.email.label }}:</label>
+                            </th>
+                            <td>
+                                {{ form.email(size=32) }}<br>
+                                {% for error in form.email.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div>
+                <div class="rfm mbw bw0" id="fuwutiaoli">
+                    <table width="100%">
+                        <tbody>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <td>
+                            <span id="reginfo_a_btn">
+                                {{ form.submit() }}
+                                <input type="checkbox" class="pc"  checked="checked">
+                                <label >同意
+                                    <a href="">网站服务条款</a>
+                                </label>
+                            </span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="rfm bw0  mbw" id="kuaijiedenglu">
+                    <table>
+                        <tbody><tr>
+                            <th>快捷登录:</th>
+                            <td>
+
+                                <a href="">
+                                    <img src="https://static.52pojie.cn/static/image/common/qq_login.gif" class="vm">
+                                </a>
+
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,90 @@
+<div id=""><table id="" class="plhin">
+    <tbody>
+    <tr>
+        <td class="pls" rowspan="2" style="position: relative;">
+            <div id="" class="pls favatar" style="bottom: 0px;">
+                <div class="pi">
+                    <div class="authi">
+                        <a href="{{ url_for('user',username=comment.author.username) }}"
+                           class="xw1" {% if comment.author.username==article.author.username %}
+                           style="color: #FF0000"
+                        {% endif %}>
+                            {{ comment.author.username }}
+                        </a>
+                    </div>
+                </div>
+                    <div class="avatar">
+                        <a href="{{ url_for('user',username=comment.author.username) }}" class="avtm" target="_blank" >
+                            <img src="{{ url_for('static',filename='/avatar/'+comment.author.user_avatar)}}">
+                        </a>
+                    </div>
+            </div>
+        </td>
+        <td class="plc">
+            <div class="pi">
+                <strong>
+                    <a href="" id="" onclick="setCopy(this.href, '帖子地址复制成功');return false;" one-link-mark="yes">
+                        推荐
+                    </a>
+                </strong>
+                <div class="pti">
+
+                    <div class="authi">
+                        {% if comment.author.username==article.author.username %}
+                        <img class="authicn vm" id="" src="https://static.52pojie.cn/static/image/common/ico_lz.png">
+                        <span class="firstauthor">&nbsp;楼主</span><span class="pipe">|</span>
+                        {% else %}
+                        <img class="authicn vm" id="authicon22290526" src="https://static.52pojie.cn/static/image/common/online_member.gif">
+                        {% endif %}
+                        <em id=""><span class="poston">发表于</span> {{ comment.timestamp}}</em>
+                    </div>
+                </div>
+
+            </div>
+            <div class="pcb">
+                <div class="t_fsz">
+                <table >
+                    <tbody>
+                    <tr>
+                        <td class="t_f" id="">
+                            {{ comment.body }}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+
+                </div>
+
+            </div>
+
+        </td>
+    </tr>
+    <tr id=""></tr>
+    <tr>
+        <td class="pls"></td>
+        <td class="plc" style="overflow:visible;">
+            <div class="po hin">
+                <div class="pob cl">
+                    <em>
+                        <a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=4&amp;tid=811805&amp;repquote=22290370&amp;extra=page%3D1&amp;page=1" onclick="showWindow('reply', this.href)" one-link-mark="yes">回复</a>
+                        <a class="replyadd" href="forum.php?mod=misc&amp;action=postreview&amp;do=support&amp;tid=811805&amp;pid=22290370&amp;hash=508549cb" onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_support_22290370').innerHTML ? $('review_support_22290370').innerHTML : 0) + ' 人 支持'" one-link-mark="yes">支持 <span id="review_support_22290370">78</span></a>
+                        <a class="replysubtract" href="forum.php?mod=misc&amp;action=postreview&amp;do=against&amp;tid=811805&amp;pid=22290370&amp;hash=508549cb" onclick="showWindow('login', this.href)" onmouseover="this.title = ($('review_against_22290370').innerHTML ? $('review_against_22290370').innerHTML : 0) + ' 人 反对'" one-link-mark="yes">反对 <span id="review_against_22290370">1</span></a>
+                    </em>
+
+                    <p>
+                        <a href="javascript:;" onclick="showWindow('miscreport22290370', 'misc.php?mod=report&amp;rtype=post&amp;rid=22290370&amp;tid=811805&amp;fid=4', 'get', -1);return false;" one-link-mark="yes">举报</a>
+                    </p>
+
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr class="ad">
+        <td class="pls">
+        </td>
+        <td class="plc">
+        </td>
+    </tr>
+    </tbody></table>
+</div>

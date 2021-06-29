@@ -1,0 +1,224 @@
+{% extends 'Base.html' %}
+
+{% block content %}
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/article.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/article2.css') }}">
+        <link rel="stylesheet" id="css_responsive" type="text/css" href="https://static.52pojie.cn/cache/style_1_responsive.css?GVK">
+    </head>
+    <body id="nv_forum" class="pg_viewthread" onkeydown="if(event.keyCode==27) return false;">
+    <div id="append_parent"></div><div id="ajaxwaitid"></div>
+    <div id="toptb" class="cl">
+        <div class="wp">
+            <div class="z">
+                <a href=""  >官方微博</a>
+                <a href="" style="color: red" >官方入门教学培训</a>
+            </div>
+            <div class="y">
+                </div>
+        </div>
+    </div>
+
+    <div id="wp" class="wp">
+
+        <style id="diy_style" type="text/css"></style>
+        <div id="diynavtop" class="area"></div>
+        <div id="pt" class="bm cl">
+            <div class="z">
+                <a href="/" class="nvhm" title="首页" ></a>
+                <em>»</em>
+                <a href="{{ url_for('index') }}" >树洞</a>
+                <em>›</em>
+                <a href="{{ url_for('index') }}/?view={{ request.args.get('view', 'timestamp') }}&filter=default" >{{ article.category }}</a>
+                <em>›</em>
+                <a href="" >{{ article.title }}</a>
+            </div>
+        </div>
+
+        <style id="diy_style" type="text/css"></style>
+        <div class="wp">
+            <div id="diy1" class="area"></div>
+        </div>
+
+        <div class="pgs mtm mbm cl">
+            <div class="pg">{% include 'com_paging.html' %}</div><span class="pgb y"><a href="{{ url_for('index') }}" >返回列表</a></span>
+            <a id="newspecialtmp" href="{{ url_for('post') }}" title="发新帖" ><img src="https://static.52pojie.cn/static/image/common/pn_post.png" alt="发新帖"></a>
+        </div>
+
+
+
+        <div id="postlist" class="pl bm">
+            <table>
+                <tbody>
+                <tr>
+                    <td class="pls ptn pbn">
+                        <div class="hm ptn">
+                            <span class="xg1">查看:</span> <span class="xi1">{{ article.count }}</span><span class="pipe">|</span><span class="xg1">回复:</span> <span class="xi1">{{ article.reply }}</span>
+                        </div>
+                    </td>
+                    <td class="plc ptm pbn vwthd">
+                        <div class="y">
+                            <a href="" title="上一主题" ><img src="https://static.52pojie.cn/static/image/common/thread-prev.png" alt="上一主题" class="vm"></a>
+                            <a href="" title="下一主题" ><img src="https://static.52pojie.cn/static/image/common/thread-next.png" alt="下一主题" class="vm"></a>
+                        </div>
+                        <span class="xg1 side_btn">
+<a onclick="setcookie('close_leftinfo', 1);location.reload();" title="收起左侧" class="btn_s_close" href="javascript:;" ><img src="https://static.52pojie.cn/static/image/common/control_l.png" alt="收起左侧" class="vm"></a>
+</span>
+                        <h1 class="ts">
+                            <span id="thread_subject">{{article.title}}</span>
+                        </h1>
+                        <span class="xg1">
+&nbsp;<img src="https://static.52pojie.cn/static/image/common/recommend_3.gif" alt="" title="评价指数 1091">
+&nbsp;<img src="https://static.52pojie.cn/static/image/common/hot_3.gif" alt="" title="热度: 11210">
+<a href="" onclick="return copyThreadUrl(this)" >[复制链接]</a>
+</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <table>
+                <tr class="ad">
+                    <td class="pls">
+                    </td>
+                    <td class="plc">
+                    </td>
+                </tr>
+            </table>
+
+            <div id="post_22290312"><div id="threadstamp"><img src="https://static.52pojie.cn/static/image/stamp/005.gif" title="置顶"></div>
+                <a name="newpost" ></a><table id="pid22290312" class="plhin res-postfirst" summary="pid22290312" cellspacing="0" cellpadding="0">
+                    <tbody><tr>
+                        <td class="pls" rowspan="2" style="position: relative;">
+                            <div id="favatar22290312" class="pls favatar" style="bottom: 0px;">
+                                <div class="pi">
+                                    <div class="authi">
+                                        <a href="{{ url_for('user',username=article.author.username) }}" class="xw1" style="color: #FF0000">{{ article.author.username }}</a>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="avatar"><a href="{{ url_for('user',username=article.author.username) }}" class="avtm" target="_blank" ><img src="{{ url_for('static',filename='/avatar/'+user.user_avatar)}}"></a></div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="plc">
+                            <div class="pi">
+                                <div id="fj" class="y">
+                                    <label class="z">电梯直达</label>
+                                    <input type="text" class="px p_fre z" size="2" onkeyup="$('fj_btn').href='forum.php?mod=redirect&amp;ptid=811805&amp;authorid=0&amp;postno='+this.value" onkeydown="if(event.keyCode==13) {window.location=$('fj_btn').href;return false;}" title="跳转到指定楼层">
+                                    <a href="javascript:;" id="fj_btn" class="z" title="跳转到指定楼层" ><img src="https://static.52pojie.cn/static/image/common/fj_btn.png" alt="跳转到指定楼层" class="vm"></a>
+                                </div>
+                                <strong>
+                                    <a href="thread-811805-1-1.html" id="postnum22290312" onclick="setCopy(this.href, '帖子地址复制成功');return false;" >
+                                        <font color="red"><b>楼主</b></font></a>
+                                </strong>
+                                <div class="pti">
+                                    <div class="pdbt">
+                                    </div>
+                                    <div class="authi">
+                                        <img class="authicn vm" id="authicon22290312" src="https://static.52pojie.cn/static/image/common/fanyinwen.gif">
+                                        <span class="res-author"><a href="home.php?mod=space&amp;uid=1" target="_blank" class="xi2" style="color: #FF0000" >{{ user.username }}</a>
+</span><em id="authorposton22290312"><span class="poston">发表于</span> {{ article.timestamp }}</em>
+                                        <span class="none"><img src="https://static.52pojie.cn/static/image/common/arw_r.gif" class="vm" alt="回帖奖励"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pct"><div class="dnch_eo_pt"><ins class="adsbygoogle" style="display:inline-block;min-width:200px;max-width:1200px;width:100%;height:90px" data-ad-client="ca-pub-2139103486038198" data-ad-slot="6131515813"></ins>
+
+                            </div><style type="text/css">.pcb{margin-right:0}</style><div class="pcb">
+
+                                <div class="t_fsz">
+                                    <table cellspacing="0" cellpadding="0"><tbody><tr><td class="t_f" id="postmessage_22290312">
+                                        <font size="6"><font color="#ff0000"><strong>{{ article.body }}</strong></font></font><br>
+                                        <br>
+
+                                        <div class="parsedown-markdown-end_FLAG_ZXSQ" style="display:none"></div></td></tr></tbody></table>
+
+
+                                </div>
+
+                            </div>
+                            </div>
+
+                        </td></tr>
+                    <tr id="_postposition22290312"></tr>
+                    <tr>
+                        <td class="pls"></td>
+                        <td class="plc" style="overflow:visible;">
+                            <div class="po hin">
+                                <div class="pob cl">
+                                    <em>
+                                        <a class="fastre" href="forum.php?mod=post&amp;action=reply&amp;fid=4&amp;tid=811805&amp;reppost=22290312&amp;extra=page%3D1&amp;page=1" onclick="showWindow('reply', this.href)" >回复</a>
+                                    </em>
+
+                                    <p>
+                                        <a href="javascript:;" onclick="showWindow('miscreport22290312', 'misc.php?mod=report&amp;rtype=post&amp;rid=22290312&amp;tid=811805&amp;fid=4', 'get', -1);return false;" >举报</a>
+                                    </p>
+
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="ad">
+                        <td class="pls">
+                        </td>
+                        <td class="plc">
+                        </td>
+                    </tr>
+                    </tbody></table>
+
+            </div>
+
+
+            {% for comment in comments %}
+                {% include '_detail.html' %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="pgs mtm mbm cl">
+        <div class="pg">{% include 'com_paging.html' %}</div><span class="pgb y"><a href="{{ url_for('index') }}" >返回列表</a></span>
+        <a id="newspecialtmp" href="{{ url_for('post') }}" title="发新帖" ><img src="https://static.52pojie.cn/static/image/common/pn_post.png" alt="发新帖"></a>
+    </div>
+    <div id="f_pst" class="pl bm bmw">
+        <form method="post" autocomplete="off" id="fastpostform" action="">
+            {{ form.hidden_tag() }}
+            <table cellspacing="0" cellpadding="0">
+                <tbody><tr>
+                    <td class="pls">
+                    </td>
+                    <td class="plc">
+
+                        <span id="fastpostreturn"></span>
+
+
+                        <div class="cl">
+                            <div id="fastposteditor">
+                                <p>{{ form.body.label }}</p>
+                                    <div class="area">
+                                        {{ form.body(cols=100, rows=5) }}
+                                        {% for error in form.body.errors %}
+                                            <span style="color: red;">[{{ error }}]</span>
+                                        {% endfor %}
+                                    </div>
+                            </div>
+                        </div>
+                        <div id="seccheck_fastpost">
+                        </div>
+
+                        <p class="ptm pnpost">
+                            {{ form.submit() }}
+
+                            <span style="padding:0 5px; color:#f44336"><strong>警告：本版块禁止灌水或回复与主题无关内容，违者重罚！</strong></span>
+
+                        </p>
+                    </td>
+                </tr>
+                </tbody></table>
+        </form>
+    </div>
+
+    </body>
+{% endblock %}

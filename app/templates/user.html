@@ -1,0 +1,233 @@
+{% extends 'Base.html' %}
+
+
+{% block content %}
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/article.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/article2.css') }}">
+
+    <style>
+    .blocktitle{
+
+        background-size: initial;
+        background-attachment: initial;
+        background-origin: initial;
+        background-clip: initial;
+        background-color: rgb(234, 241, 242);
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: rgb(221, 221, 221);
+    }
+    </style>
+
+
+    <div id="ct" class="">
+        <div id="diypage" class="area">
+            <div id="frame1" class="frame cl" >
+                <div id="frame1_left" style="width: auto;margin-left: 50px" class="z column">
+                    <div id="profile" class="block move-span">
+                        <div class="blocktitle title">
+                            <span>
+                                <a href="" >头像</a>
+                            </span>
+                        </div>
+                        <div id="profile_content" class="dxb_bc">
+                            <div>
+                                <div class="hm">
+                                    <p>
+                                        <a href="" target="_blank" >
+                                            <img src="{{ url_for('static',filename='/avatar/'+user.user_avatar)}} "width="150" height="150">
+                                        </a>
+                                    </p>
+                                    <h2 class="mbn">
+                                        <a href="" target="_blank" >{{ user.username }}</a>
+                                    </h2>
+                                </div>
+                                <ul class="xl xl2 cl ul_list">
+                                    <li class="ul_avt">
+                                        <a href="{{ url_for('edit_avatar') }}" >编辑头像</a>
+                                    </li>
+                                    <li class="ul_profile">
+                                        <a href="{{ url_for('edit_profile') }}" >更新资料</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="statistic" class="block move-span">
+                        <div class="blocktitle title">
+                            <span>统计信息</span>
+                        </div>
+                        <div id="statistic_content" class="dxb_bc">
+                            <div>
+                                <p class="mbm xw1">已有
+                                    <strong class="xi1">3</strong> 人来访过
+                                </p>
+                                <ul class="xl xl2 cl">
+                                    <li>积分:
+                                        <a href="" >50</a>
+                                    </li>
+                                    <li>经验:
+                                        <a href="" >20</a>
+                                    </li>
+                                    <li>威望:
+                                        <a href="" >--</a>
+                                    </li>
+                                    <li>金钱:
+                                        <a href="" >20</a>
+                                    </li>
+                                    <li>魅力:
+                                        <a href="" >10</a>
+                                    </li>
+                                    <li>金币:
+                                        <a href="" >--</a>
+                                    </li>
+                                    <li>好友:
+                                        <a href="" >--</a>
+                                    </li>
+                                    <li>主题:
+                                        <a href="" >--</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="frame1_center" style="width: auto;margin-left: 50px" class="z column">
+                    <div id="personalinfo" class="block move-span">
+                        <div class="blocktitle title">
+                            <span>
+                                个人资料
+                            </span>
+                            <span class="y xw0">
+                                <a href="{{ url_for('edit_profile') }}" >
+                                    编辑我的资料
+                                </a>
+                            </span>
+                        </div>
+                        <div  class="dxb_bc">
+                            <ul  class="mbm pbm bbda cl">
+                                <li>
+                                    <em>性别 : </em>{{ user.gender }}
+
+                                </li>
+                                <li>
+                                    <em>生日</em>
+                                </li>
+                                <li>
+                                    {% if user.about_me %}<p>关于我:{{ user.about_me }}</p>{% endif %}
+                                </li>
+                            </ul>
+                            <p style="text-align: right;">
+                                <a href="" >
+                                    查看全部个人资料
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div id="feed" class="block move-span">
+                        <div class="blocktitle title">
+                            <span>
+                                动态
+                            </span>
+                        </div>
+                        {% if not posts%}
+                            <ul  class="dxb_bc el">
+                                <p class="emp">现在还没有动态</p>
+                            </ul>
+                        {% else: %}
+                        {% for post in posts %}
+
+                        <ul  class="dxb_bc el">
+                            <li class="cl " >
+                                <div class="cl">
+                                    <img src="https://www.ytbbs.com/static/image/feed/thread.gif">
+                                    <a href="" >{{ user.username }}</a> 发表了新话题
+                                    <span class="xg1">{{ post.timestamp}}</span>
+                                    <div class="ec">
+                                        <div class="d">
+                                            <b>
+                                                <a href="{{ url_for('article',article_id=post.id) }}" >
+                                                    {{ post.title }}
+                                                </a>
+                                            </b>
+                                            <br>{{ post.body }}</div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        {% endfor %}
+                            <nav aria-label="Page navigation" style="margin-left: 250px">
+                                <ul class="pagination" style="margin: 0 0 0 0;">
+                                    {% include'_paging.html' %}
+                                </ul>
+                            </nav>
+                        {% endif %}
+
+                    </div>
+
+                    <div  class="block move-span">
+                        <div class="blocktitle title">
+                            <span>
+                                <a href="" >主题</a>
+                            </span>
+                        </div>
+                        <div  class="dxb_bc">
+                            {% if not posts %}
+                            <p class="emp">现在还没有主题，
+                                <a href="{{ url_for('post') }}" >发布主题</a>
+                            </p>
+                            {% else: %}
+                            {% for post in posts %}
+                            <ul class="xl">
+                                <li style="margin-left: 20px">
+                                    <a href="{{ url_for('article',article_id=post.id) }}" >
+                                        {{post.title}}
+                                    </a>
+                                </li>
+                            </ul>
+                            {% endfor %}
+                        {% endif %}
+                        </div>
+                    </div>
+                    <div  class="block move-span">
+                        <div class="blocktitle title">
+                            <span>
+                                <a href="" >留言板</a>
+                            </span>
+                            <span class="y xw0">
+                                <a href="" >全部</a>
+                            </span>
+                        </div>
+                        <div id="wall_content" class="dxb_bc">
+                            <div class="space_wall_post">
+                        <form action="" id="" name="" method="post" autocomplete="off" >
+                            <br>
+                            <textarea  class="pt" rows="3" cols="60"  style="width: 90%;">
+                            </textarea>
+
+                            <p class="ptn">
+                                <button  class="pn">
+                                    <strong>留言</strong>
+                                </button>
+                            </p>
+
+                        </form>
+                    </div>
+                            <hr class="da mtm m0">
+                            <div class="xld xlda el" id="comment_ul">
+                                <p class="emp">留言功能暂未开通~</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
