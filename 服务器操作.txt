@@ -1,0 +1,84 @@
+
+	
+	
+	1
+2
+3
+yum install epel-release
+
+
+
+[uwsgi]
+
+# uwsgi 启动时所使用的地址与端口
+socket = 127.0.0.1:5000 
+
+# 指向网站目录
+chdir = /www/wwwroot/Myblog/MyBlog
+
+# python 启动程序文件
+wsgi-file = application.py 
+
+# python 程序内用以启动的 application 变量名
+callable = app 
+
+# 处理器数
+processes = 4
+
+# 线程数
+threads = 2
+
+#状态检测地址
+stats = 127.0.0.1:9191
+
+
+
+https://blog.csdn.net/qq_23869697/article/details/89683244
+
+
+    source venv/bin/activate 
+	
+	
+	4、启动、停止、重载命令
+    systemctl start nginx.service
+    systemctl stop nginx.service
+    systemctl reload nginx.service
+    systemctl status nginx.service
+	
+	/www/server/nginx/sbin/nginx -c /www/server/nginx/conf/nginx.conf
+	
+	/www/wwwroot/MyBlog
+	
+	vi /usr/local/nginx/conf/nginx.conf
+	
+	uwsgi --ini uconfig.ini
+	pkill -f uwsgi -9
+	/usr/local/nginx/sbin
+	
+	ps aux | grep nginx
+
+kill -INT 进程号(例如：2661)
+
+location / {
+            root   html;
+            index  index.html in0dex.htm;
+        }
+		
+		[uwsgi]
+# 启动时所使用的地址与端口
+
+http = 0.0.0.0:80
+# 指向网站目录
+chdir =/www/wwwroot/MyBlog
+
+# python 启动程序文件
+wsgi-file = app.py
+
+# python 程序内用以启动的 application 变量名
+callable = app
+
+# 处理器数
+processes = 4
+
+# 线程数
+threads = 2
