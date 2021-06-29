@@ -1,0 +1,19 @@
+
+    {#如果存在上一页#}
+    {% if paginate.has_prev %}
+        <a href="{{ request.base_url }}/?view={{ request.args.get('view', 'timestamp') }}&page={{ paginate.prev_num }}"  aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span></a>
+    {% endif %}
+
+
+{%  for i in  paginate.iter_pages() %}
+    <a href="{{ request.base_url }}/?view={{ request.args.get('view', 'timestamp') }}&page={{ i }}">{{ i }}</a>
+{% endfor %}
+
+{#如果存在下一页#}
+
+    {% if paginate.has_next %}
+        <a href="{{ request.base_url }}/?view={{ request.args.get('view', 'timestamp') }}&page={{ paginate.next_num }}" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span></a>
+    {% endif %}
+<span > / 共 {{ totalpage }} 页</span>

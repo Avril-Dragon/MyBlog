@@ -1,23 +1,80 @@
-{% extends 'base.html' %}
+{% extends 'Base.html' %}
 
 {% block content %}
-    <h1>个人资料编辑</h1>
-    <form action="" method="post">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.username.label }}<br>
-            {{ form.username(size=32) }}<br>
-            {% for error in form.username.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.about_me.label }}<br>
-            {{ form.about_me(cols=50, rows=4) }}<br>
-            {% for error in form.about_me.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>{{ form.submit() }}</p>
-    </form>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/article.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/article2.css') }}">
+    <div id="wp" class="pl bm bmw" style="">
+        <div id="pt" class="bm cl">
+            <div class="z">
+                <a href="{{ url_for('index') }}" class="nvhm" title="首页" ></a> <em>›</em>
+                <a href="{{ url_for('user',username=current_user.username) }}" >个人主页</a> <em>›</em>个人资料
+            </div>
+        </div>
+            <div class="mn">
+                <div class="bm bw0">
+
+                    <ul class="tb cl">
+                        <li class="a">
+                         <a href="" >教育情况</a>
+                        </li>
+                        <li class="a">
+                            <a href="" >2222</a>
+                        </li>
+
+                    </ul>
+
+                    <form action="" method="post" >
+                        {{ form.hidden_tag() }}
+                        <table  class="tfm" >
+                            <tbody>
+                            <tr>
+                                <th>{{ form.username.label }}:</th>
+                                <td>{{ form.username(size=32) }}</td>
+                                {% for error in form.username.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr >
+                                <th >{{ form.about_me.label }}:</th>
+                                <td >
+                                    {{ form.about_me(cols=50, rows=4) }}<br>
+                                    {% for error in form.about_me.errors %}
+                                        <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </td>
+                                <td class="p">
+                                    <select >
+                                        <option value="0">公开</option>
+                                        <option value="1">好友可见</option>
+                                        <option value="3">保密</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr >
+                                <th >性别</th>
+                                <td >
+                                    {{ form.tag }}
+                                <td class="p">
+                                    <select >
+                                        <option value="0">公开</option>
+                                        <option value="1">好友可见</option>
+                                        <option value="3">保密</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>&nbsp;</th>
+                                <td colspan="2">
+                                    {{ form.submit() }}
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </form>
+
+                </div>
+            </div>
+    </div>
 {% endblock %}

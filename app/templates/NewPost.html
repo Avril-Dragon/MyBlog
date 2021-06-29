@@ -1,22 +1,71 @@
-{% extends 'base.html' %}
+{% extends 'Base.html' %}
 {% block content %}
-    <h1>发布新话题</h1>
-    <form action="" method="post">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.title.label }}<br>
-            {{ form.title(size=32) }}<br>
-            {% for error in form.title.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.body.label }}<br>
-            {{ form.body(cols=50, rows=4) }}<br>
-            {% for error in form.body.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>{{ form.submit() }}</p>
-    </form>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/article.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/article2.css') }}">
+    <body id="nv_forum" class="pg_viewthread" >
+    <div id="f_pst" class="pl bm bmw">
+        <form method="post" autocomplete="off" id="fastpostform" action="">
+            {{ form.hidden_tag() }}
+            <table>
+                <tbody>
+                <tr>
+                    <td class="pls">
+                    </td>
+                    <td class="plc">
+
+                        <h1>发布新话题</h1>
+                        <hr>
+                        <div class="cl">
+                            <div id="fastposteditor">
+                                <h4>请选择类别</h4><br>
+                                <div class="area">
+                                    {{ form.tag }}
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="cl">
+                            <div id="fastposteditor">
+                                <h4>{{ form.title.label }}</h4><br>
+                                <div class="area">
+                                {{ form.title(size=60) }}<br>
+                                {% for error in form.title.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                                </div>
+                                <hr>
+                            </div>
+
+                        </div>
+
+                        <div class="cl">
+                            <div id="fastposteditor">
+                                <h4>{{ form.body.label }}</h4><br>
+
+                                <div class="area">
+                                    {{ form.body(cols=100, rows=5) }}
+                                    {% for error in form.body.errors %}
+                                        <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <div id="seccheck_fastpost">
+                        </div>
+
+                        <p class="ptm pnpost">
+                            {{ form.submit() }}
+
+                            <span style="padding:0 5px; color:#f44336"><strong>警告：本版块禁止灌水！</strong></span>
+
+                        </p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+
+    </body>
 {% endblock %}

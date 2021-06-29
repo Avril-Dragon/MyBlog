@@ -17,7 +17,7 @@
     height: 16px;
     border-bottom: 1px dashed #CDCDCD;
 }
-.pob em a {
+.pob{
     padding: 5px 10px 5px 25px;
 }
 .fastre {
@@ -36,6 +36,12 @@
 a {
     color: #333;
     text-decoration: none;
+    padding: 0;
+}
+
+cite{
+    padding-left: 0;
+    padding-right: 90px;
 }
 
 table {
@@ -47,6 +53,7 @@ table {
     border-color: grey;
 }
 tbody {
+    font: 10px Tahoma,'Simsun';
     display: inline-block;
     vertical-align: middle;
     width: 100%;
@@ -70,11 +77,15 @@ tbody {
     text-align: left;
 }
 .by{
-    width:200px;
-    line-height:30px;
+    width:130px;
+    line-height:15px;
 }
 .num{
-    width:100px;
+    width:200px;
     line-height:14px;
     text-align: right;
+}
+em{
+    font-size: 1px;
+    color: #0d4982;
 }
